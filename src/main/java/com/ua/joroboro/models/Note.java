@@ -53,10 +53,9 @@ public class Note {
         this.date = date;
     }
 
-    public Note(String title, String content, String date) {
+    public Note(String title, String content) {
         this.title = title;
         this.content = content;
-        this.date = date;
     }
 
     public Note() {
