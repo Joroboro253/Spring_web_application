@@ -55,16 +55,31 @@ public class NoteController {
     }
 
     @GetMapping("/note/{id}/edit")
-    public String blogEdit(@PathVariable(value = "id") long id, @RequestParam String title, @RequestParam String content, Model model){
+    public String noteEdit(@PathVariable(value = "id") long id, Model model){
+        if(!noteRepository.existsById(id)) {
+            return "redirect:/note";
+        }
+        Optional<Note> note = noteRepository.findById(id);
+        ArrayList<Note> res = new ArrayList<>();
+        note.ifPresent(res::add);
+        model.addAttribute("note", res);
+        return "note-edit";
+
+    }
+
+    @PostMapping("/blog/{id}/edit")
+    public String blockNoteUpdate(@PathVariable(value = "id") long id, @RequestParam String title, @RequestParam String content, Model model){
         Note note = noteRepository.findById(id).orElseThrow();
         note.setTitle(title);
         note.setContent(content);
         noteRepository.save(note);
+
         return "redirect:/note";
     }
 
+
     @PostMapping("/note/{id}/remove")
-    public String blockPostDelete(@PathVariable(value = "id") long id, Model model) {
+    public String blockNoteDelete(@PathVariable(value = "id") long id, Model model) {
         Note note = noteRepository.findById(id).orElseThrow();
         noteRepository.delete(note);
 
