@@ -23,7 +23,7 @@ public class NoteController {
 
     //все заметки
     @GetMapping("/note")
-    public String blogMain(Model model){
+    public String noteMain(Model model){
         Iterable<Note> notes = noteRepository.findAll(); // массив данных со всеми значениями из Бд
         model.addAttribute("notes", notes);
         return "note-main";
@@ -34,12 +34,13 @@ public class NoteController {
         return "note-add";
     }
 
-    @PostMapping("note/add") //??
-    public String blockNoteAdd(@RequestParam String title, @RequestParam String content, Model model) {
+    @PostMapping("/note/add") //??
+    public String notePostAdd(@RequestParam String title, @RequestParam String content, Model model) {
         Note note = new Note(title, content);
         noteRepository.save(note);
         return "redirect:/note";
     }
+
 
     @GetMapping("/note/{id}")
     public String noteDetails(@PathVariable(value = "id") long id, Model model) {
@@ -67,7 +68,7 @@ public class NoteController {
 
     }
 
-    @PostMapping("/blog/{id}/edit")
+    @PostMapping("/note/{id}/edit")
     public String blockNoteUpdate(@PathVariable(value = "id") long id, @RequestParam String title, @RequestParam String content, Model model){
         Note note = noteRepository.findById(id).orElseThrow();
         note.setTitle(title);
