@@ -51,7 +51,7 @@ public class NoteController {
         Optional<Note> note = noteRepository.findById(id);
         ArrayList<Note> res = new ArrayList<>();
         note.ifPresent(res::add);
-        model.addAttribute("note", res);
+        model.addAttribute("note", res); // здесь ноте на месте, менять нельзя
         return "note-details";
     }
 
@@ -63,13 +63,13 @@ public class NoteController {
         Optional<Note> note = noteRepository.findById(id);
         ArrayList<Note> res = new ArrayList<>();
         note.ifPresent(res::add);
-        model.addAttribute("note", res);
+        model.addAttribute("note", res); // здесь ноте на месте, менять нельзя
         return "note-edit";
 
     }
 
     @PostMapping("/note/{id}/edit")
-    public String blockNoteUpdate(@PathVariable(value = "id") long id, @RequestParam String title, @RequestParam String content, Model model){
+    public String notePostUpdate(@PathVariable(value = "id") long id, @RequestParam String title, @RequestParam String content, Model model){
         Note note = noteRepository.findById(id).orElseThrow();
         note.setTitle(title);
         note.setContent(content);
@@ -80,7 +80,7 @@ public class NoteController {
 
 
     @PostMapping("/note/{id}/remove")
-    public String blockNoteDelete(@PathVariable(value = "id") long id, Model model) {
+    public String notePostDelete(@PathVariable(value = "id") long id, Model model) {
         Note note = noteRepository.findById(id).orElseThrow();
         noteRepository.delete(note);
 

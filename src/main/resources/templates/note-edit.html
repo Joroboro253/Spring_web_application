@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>Редактирование статьи</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -11,12 +11,12 @@
 <div class="container mt-5 mv-5">
   <h1>Редактирование статьи</h1>
   <div th:each="el: ${note}">
-    <form method="note">
-      <input type="text" th:value="${el.title}" name="title" placeholder="Введите название статьи" class="form-control"><br>
-
-      <textarea name="full_text" placeholder="Введите полный текст статьи" class="form-control" th:text="${el.content}"/><br>
-      <button type="submit" class="btn btn-success">Обновить</button>
+    <form method="post">
+        <input type="text" th:value="${el.title}" name="title" placeholder="Введите название статьи" class="form-control"><br>
+        <textarea name="content" th:value="${el.content}" placeholder="Введите полный текст статьи" class="form-control"></textarea>
+        <button type="submit" class="btn btn-success">Обновить</button>
     </form>
+
   </div>
 </div>
 
