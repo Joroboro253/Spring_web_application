@@ -1,9 +1,26 @@
-This project is a notes website that is implemented using the Spring framework, specifically Spring MVC, Spring Boot. In addition, the project uses Bootstrap, a popular CSS framework, to provide a modern and responsive user interface.
+Данный проект представляет собой сайт заметок, который реализован с использованием фреймворка Spring, а именно Spring MVC, Spring Boot. Также в проекте используется Bootstrap, популярный CSS фреймворк, для обеспечения современного и отзывчивого пользовательского интерфейса.
 
-The website allows users to create and manage notes. The project uses the Spring Boot framework, which allows for easy setup and configuration of the application. It also uses Spring MVC to provide the web layer.
+Веб-сайт позволяет пользователям создавать заметки и управлять ими. В проекте используется фреймворк Spring Boot, который позволяет легко установить и настроить приложение. В нем также используется Spring MVC для обеспечения веб-слоя. Функциональность заметок реализована с помощью RESTful API, что позволяет легко интегрировать их с другими приложениями. Заметки хранятся в базе данных MySQL, и проект использует Spring Data JPA для обеспечения доступа к базе данных.
 
-The notes functionality is implemented using a RESTful API, which allows for easy integration with other applications. The notes are stored in a MySQL database, and the project uses Spring Data JPA to provide database access.
+Фронтенд приложения построен с использованием HTML, CSS и шаблонизатора Thymeleaf. В проекте также используется Bootstrap для обеспечения отзывчивого и современного пользовательского интерфейса.
 
-The frontend of the application is built using HTML, CSS, and Thymeleaf templating engine. The project also uses Bootstrap to provide a responsive and modern user interface.
+Система Заметок. Возможность воздания, удаления и редактирования заметок.
 
-Overall, this project is a great example of a Spring-based web application that demonstrates best practices for using Spring MVC, Spring Boot and Bootstrap. It can serve as a starting point for building more complex web applications using the Spring framework and Bootstrap.
+Настройка подключения к БД:
+Port 3306
+Username bestuser
+Password bestuser
+ДБ: joroboro_proj
+
+SQL commands:
+CREATE TABLE `note` (
+  `Id` int NOT NULL,
+  `title` varchar(45) DEFAULT NULL,
+  `content` varchar(100) DEFAULT NULL,
+  `date` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+CREATE TABLE `note_seq` (
+  `next_val` bigint DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
